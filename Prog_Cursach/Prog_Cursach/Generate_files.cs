@@ -11,6 +11,7 @@ namespace Prog_Cursach
         private string nameFront = "",
             nameNature = "",
             nameMulti = "";
+
         private int count = 0,
             max = 0;
 

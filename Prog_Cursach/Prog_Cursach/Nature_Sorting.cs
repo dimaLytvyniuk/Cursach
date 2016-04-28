@@ -9,15 +9,17 @@ namespace Prog_Cursach
 {
     class Nature_Sorting
     {
-        string nameMain ="",
+        string nameMain = "",
             nameF1 = @"fNature1.txt",
-            nameF2 = @"fNature2.txt";
+            nameF2 = @"fNature2.txt",
+            nameOut = "";
         const int marker = Int32.MaxValue;
        
 
-        public Nature_Sorting(string name)
+        public Nature_Sorting(string name,string nameOut)
         {
             nameMain = name;
+            this.nameOut = nameOut;
         }
 
         public void MakeSort()
@@ -259,7 +261,7 @@ namespace Prog_Cursach
             File.Delete(nameF1);
             File.Delete(nameF2);
 
-            DeBinaireFile outFile = new DeBinaireFile(nameMain, "resNature.txt");
+            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
             outFile.CreateTXT();
         }
 

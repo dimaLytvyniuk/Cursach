@@ -15,15 +15,18 @@ namespace Prog_Cursach
            lim = 0,
            m = 0;
 
-        string nameMain = "";
+        string nameMain = "",
+            nameOut = "";
 
         string[] namesA,
             namesB;
 
 
-        public Multi_Sorting_2(string name, int count)
+        public Multi_Sorting_2(string name, int count,string nameOut)
         {
             nameMain = name;
+            this.nameOut = nameOut;
+
             n = count;
             m = (int)(Math.Round(Math.Sqrt(n)));
 
@@ -210,7 +213,7 @@ namespace Prog_Cursach
             while(k!=1)
             {
                 l = 0;
-                tmp = 0;
+                tmp = -1;
                 k = 0;
 
                 for (int i = 0; i < count; i++)
@@ -244,7 +247,10 @@ namespace Prog_Cursach
                 while(AnyTrue(fl,count))
                 {
                     currentFile = writers[k];
-                    k++;
+                    tmp++;
+
+                    if (tmp == m)
+                        tmp = 0;
 
                     for (int i = 0; i < count; i++)
                     {
@@ -256,6 +262,7 @@ namespace Prog_Cursach
                             {
                                 fl[i] = false;
                             }
+
                         if (fl[i])
                             flOpen[i] = true;
                         else
@@ -304,6 +311,8 @@ namespace Prog_Cursach
                     }
 
                     currentFile.Write(marker);
+
+
                 }
 
                 for(int i=0;i<count;i++)
@@ -322,7 +331,7 @@ namespace Prog_Cursach
             else
                 s = namesB[0];
 
-            DeBinaireFile outFile = new DeBinaireFile(s, "resMulti.txt");
+            DeBinaireFile outFile = new DeBinaireFile(s, nameOut);
             outFile.CreateTXT();
 
 

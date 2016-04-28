@@ -24,5 +24,14 @@ namespace Prog_Cursach
         {
             InitializeComponent();
         }
+
+        private void button_Res_Click(object sender, RoutedEventArgs e)
+        {
+            Main_Sort sort = new Main_Sort();
+            sort.GenerateFiles();
+            sort.CreateNature();
+            sort.Create_Merge();
+            sort.CreateMulti();
+        }
     }
 }

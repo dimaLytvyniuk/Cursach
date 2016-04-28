@@ -9,15 +9,17 @@ namespace Prog_Cursach
 {
     class Merge_Sort
     {
-        string nameMain="",
+        string nameMain = "",
              nameF1 = "f1.txt",
-                nameF2 = "f2.txt";
+                nameF2 = "f2.txt",
+            nameOut = "";
         int count = 0;
 
-        public Merge_Sort(string name,int n)
+        public Merge_Sort(string name,int n,string nameOut)
         {
             nameMain = name;
             count = n;
+            this.nameOut = nameOut;
         }
 
         public void MakeSort()
@@ -204,7 +206,7 @@ namespace Prog_Cursach
             File.Delete(nameF1);
             File.Delete(nameF2);
 
-            DeBinaireFile outFile = new DeBinaireFile(nameMain, "resMerge.txt");
+            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
             outFile.CreateTXT();
         }
         
