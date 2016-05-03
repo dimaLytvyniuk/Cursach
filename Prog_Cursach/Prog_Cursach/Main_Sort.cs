@@ -16,7 +16,7 @@ namespace Prog_Cursach
             OutNature = "resNature.txt",
             OutMulti = "resMulti.txt";
 
-        static int n = 10,
+        static int n = 100000,
             max = 20;
 
         

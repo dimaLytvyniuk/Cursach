@@ -44,5 +44,33 @@ namespace Prog_Cursach
 
             File.Delete(nameMain);
         }
+
+        public void CreateTXT(int n)
+        {
+
+            using (StreamWriter writer = new StreamWriter(outName, false))
+            using (FileStream file = File.OpenRead(nameMain))
+            using (BinaryReader reader = new BinaryReader(file))
+            {
+                int y = 0,
+                    count = 0;
+                bool fl = true;
+
+                while (count < n)
+                {
+                    count++;
+                    try
+                    {
+                        y = reader.ReadInt32();
+                        writer.Write(y + " ");
+                    }
+                    catch (EndOfStreamException e)
+                    {
+                        fl = false;
+                    }
+
+                }
+            }
+        }
     }
 }

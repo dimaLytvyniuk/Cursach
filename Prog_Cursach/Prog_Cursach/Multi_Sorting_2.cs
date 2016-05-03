@@ -53,22 +53,11 @@ namespace Prog_Cursach
             for (int i = 0; i < c; i++)
             {
                 if (gap[i] == true)
+                {
                     res = true;
-                break;
-            }
-
-            return res;
-        }
-
-        private bool AnyTrue(int[] gap, int c)
-        {
-            bool res = false;
-
-            for (int i = 0; i < c; i++)
-            {
-                if (gap[i] != marker)
-                    res = true;
-                break;
+                    break;
+                }
+                
             }
 
             return res;
@@ -91,7 +80,7 @@ namespace Prog_Cursach
             int a1 = 0,
                 a2 = 0,
                 l = 0;
-            bool fl = true, fl2 = false;
+            bool fl = true;
             bool[] fl1 = new bool[m];
             int[] length = new int[m];
 
@@ -143,9 +132,10 @@ namespace Prog_Cursach
                     }
                     else
                     {
+                        if(fl1[l])
                         currentFile.Write(marker);
 
-                        while (fl2 == false)
+                        while (true)
                         {
                             l++;
                             if (l >= m)
@@ -195,7 +185,7 @@ namespace Prog_Cursach
 
         public void SortFiles()
         {
-            bool mark = false;
+            bool mark = false, opens;
 
             int k = 0, min = 0, l = 0, count = m,tmp=0;
 
@@ -206,11 +196,12 @@ namespace Prog_Cursach
             BinaryWriter currentFile;
 
             bool[] fl = new bool[m],
-                flOpen = new bool[m];
+                flOpen = new bool[m],
+                opening = new bool[m];
             int[] last = new int[m],
                 length = new int[m];
 
-            while(k!=1)
+            while(k!=2)
             {
                 l = 0;
                 tmp = -1;
@@ -235,6 +226,7 @@ namespace Prog_Cursach
 
                     writers[i] = new BinaryWriter(files[i]);
                     readers[i] = new BinaryReader(filesRead[i]);
+                    opening[i] = false;
                 }
 
                 if (mark)
@@ -242,32 +234,42 @@ namespace Prog_Cursach
                 else
                     mark = true;
 
-                
-
-                while(AnyTrue(fl,count))
+                for (int i = 0; i < count; i++)
                 {
-                    currentFile = writers[k];
-                    tmp++;
+                    try
+                    {
+                        last[i] = readers[i].ReadInt32();
+                    }
+                    catch (EndOfStreamException e)
+                    {
+                        fl[i] = false;
+                    }
+
+                    if (fl[i])
+                        flOpen[i] = true;
+                    else
+                        flOpen[i] = false;
+                }
+
+                while (AnyTrue(fl,count))
+                {
+                    tmp++;   
 
                     if (tmp == m)
                         tmp = 0;
 
-                    for (int i = 0; i < count; i++)
-                    {
-                            try
-                            {
-                                last[i] = readers[i].ReadInt32();
-                            }
-                            catch (EndOfStreamException e)
-                            {
-                                fl[i] = false;
-                            }
+                    currentFile = writers[tmp];
 
-                        if (fl[i])
-                            flOpen[i] = true;
-                        else
-                            flOpen[i] = false;
+                    if (!opening[tmp])
+                    {
+                        k++;
+                        opening[tmp] = true;
                     }
+
+                   
+
+                    if (AnyTrue(flOpen, count))
+                        opens = true;
 
                     while (AnyTrue(flOpen,count))
                     {
@@ -293,6 +295,7 @@ namespace Prog_Cursach
                             }
                         }
 
+                        
                             currentFile.Write(last[l]);
 
                         try
@@ -310,29 +313,45 @@ namespace Prog_Cursach
                         }
                     }
 
-                    currentFile.Write(marker);
+                        currentFile.Write(marker);
 
+                    count = k;
 
+                    for (int i = 0; i < count; i++)
+                    {
+                        try
+                        {
+                            last[i] = readers[i].ReadInt32();
+                        }
+                        catch (EndOfStreamException e)
+                        {
+                            fl[i] = false;
+                        }
+
+                        if (fl[i])
+                            flOpen[i] = true;
+                        else
+                            flOpen[i] = false;
+                    }
                 }
 
-                for(int i=0;i<count;i++)
+                for(int i=0;i<m;i++)
                 {
                     readers[i].Close();
+
                     writers[i].Close();
                 }
-
-                count = k;
             }
 
             string s = "";
 
             if (mark)
-                s = namesA[0];
-            else
                 s = namesB[0];
+            else
+                s = namesA[0];
 
             DeBinaireFile outFile = new DeBinaireFile(s, nameOut);
-            outFile.CreateTXT();
+            outFile.CreateTXT(n);
 
 
         }
