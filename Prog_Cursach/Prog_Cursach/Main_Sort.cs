@@ -8,6 +8,7 @@ namespace Prog_Cursach
 {
     class Main_Sort
     {
+        int n, max, min;
 
         string nameFront = "fileFront.txt",
            nameNature = "fileNature.txt",
@@ -16,14 +17,24 @@ namespace Prog_Cursach
             OutNature = "resNature.txt",
             OutMulti = "resMulti.txt";
 
-        static int n = 10,
+        public Main_Sort()
+        {
+            n = 10;
             max = 20;
-
+            min = -20;
+        }
+        
+        public Main_Sort(int n,int max,int min)
+        {
+            this.n = n;
+            this.max = max;
+            this.min = min;
+        }
         
 
         public void GenerateFiles()
         {
-            Generate_files generation = new Generate_files(nameFront, nameNature, nameMulti, n, max);
+            Generate_files generation = new Generate_files(nameFront, nameNature, nameMulti, n, max,min);
             generation.Generate();
         }
 

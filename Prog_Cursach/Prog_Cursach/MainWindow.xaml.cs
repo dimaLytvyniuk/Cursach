@@ -20,6 +20,18 @@ namespace Prog_Cursach
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        int n = 0,
+            max = 0,
+            min = 0;
+
+        private void buttonStart_Click(object sender, RoutedEventArgs e)
+        {
+            n = Convert.ToInt32(textBoxN.Text);
+            max = Convert.ToInt32(textBoxMax.Text);
+            min=
+        }
+ 
         public MainWindow()
         {
             InitializeComponent();
