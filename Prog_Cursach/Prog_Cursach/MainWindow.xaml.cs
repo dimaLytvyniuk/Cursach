@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Prog_Cursach
 {
@@ -27,9 +28,13 @@ namespace Prog_Cursach
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
+            label_Finish.Visibility = Visibility.Hidden;
+
             n = Convert.ToInt32(textBoxN.Text);
             max = Convert.ToInt32(textBoxMax.Text);
-            min=
+            min = Convert.ToInt32(textBoxMin.Text);
+
+            int y = 0;
         }
  
         public MainWindow()
@@ -39,11 +44,32 @@ namespace Prog_Cursach
 
         private void button_Res_Click(object sender, RoutedEventArgs e)
         {
-            Main_Sort sort = new Main_Sort();
+            label_Finish.Visibility = Visibility.Hidden;
+            
+            Main_Sort sort = new Main_Sort(n,max,min);
             sort.GenerateFiles();
+
+
             sort.CreateNature();
+
             sort.Create_Merge();
+
+
+
+            //Stopwatch stopWatch = new Stopwatch();
+
+            //stopWatch.Start();
+
             sort.CreateMulti();
+
+            label_Finish.Visibility = Visibility.Visible;
+
+            //stopWatch.Stop();
+            //TimeSpan ts = stopWatch.Elapsed;
+
+            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+
+
         }
     }
 }

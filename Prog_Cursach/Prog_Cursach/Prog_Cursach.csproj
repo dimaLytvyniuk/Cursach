@@ -73,7 +73,6 @@
   <ItemGroup>
     <Compile Include="Main_Sort.cs" />
     <Compile Include="Merge_Sort.cs" />
-    <Compile Include="Multi_Sorting.cs" />
     <Compile Include="Multi_Sorting_2.cs" />
     <Compile Include="Nature_Sorting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

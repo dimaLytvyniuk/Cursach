@@ -23,7 +23,7 @@ namespace Prog_Cursach
             max = 20;
             min = -20;
         }
-        
+
         public Main_Sort(int n,int max,int min)
         {
             this.n = n;

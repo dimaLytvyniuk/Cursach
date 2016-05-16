@@ -24,8 +24,8 @@ namespace Prog_Cursach
             nameNature = nameF2;
             nameMulti = nameF3;
             count = n;
-            max = maxi;
-            this.min = min;
+            max =maxi;
+            this.min = Math.Abs(min);
         }
 
         public void Generate()
@@ -40,11 +40,11 @@ namespace Prog_Cursach
             {
                 for (int i = 0; i < count; i++)
                 {
-                    int a = random.Next(max+min) - min;
-                    wrotrFront.Write(a);
-                    start.Write(a + " ");
-                    wrotrNature.Write(a);
-                    wrotrMulti.Write(a);
+                    int c = random.Next(max) - random.Next(min);
+                    wrotrFront.Write(c);
+                    start.Write(c+ " ");
+                    wrotrNature.Write(c);
+                    wrotrMulti.Write(c);
                 }
             }
         }
