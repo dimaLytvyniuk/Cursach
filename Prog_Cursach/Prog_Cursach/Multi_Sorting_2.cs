@@ -11,9 +11,10 @@ namespace Prog_Cursach
     {
         const int marker = Int32.MaxValue;
 
-        static int n = 0,
+        int n = 0,
            lim = 0,
-           m = 0;
+           m = 0,
+            rozr;
 
         string nameMain = "",
             nameOut = "";
@@ -22,13 +23,17 @@ namespace Prog_Cursach
             namesB;
 
 
-        public Multi_Sorting_2(string name, int count,string nameOut)
+        public Multi_Sorting_2(string name, int count,string nameOut,int rozr)
         {
             nameMain = name;
             this.nameOut = nameOut;
-
+            this.rozr = rozr;
             n = count;
-            m = n/22000;
+
+            if (n < 50000)
+                m = 3;
+            else
+                m = n / 20000 +1;
 
 
             namesA = new string[m];
@@ -325,7 +330,7 @@ namespace Prog_Cursach
             else
                 s = namesA[0];
 
-            DeBinaireFile outFile = new DeBinaireFile(s, nameOut);
+            DeBinaireFile outFile = new DeBinaireFile(s, nameOut,rozr);
             outFile.CreateTXT();
 
 

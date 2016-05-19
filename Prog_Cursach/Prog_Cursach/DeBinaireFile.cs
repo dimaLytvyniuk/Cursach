@@ -12,10 +12,13 @@ namespace Prog_Cursach
         private string nameMain="",
             outName = "";
 
-        public DeBinaireFile(string inName,string outputName)
+        int max, min, rozryads;
+
+        public DeBinaireFile(string inName,string outputName,int rozryads)
         {
             nameMain = inName;
             outName = outputName;
+            this.rozryads = rozryads;
         }
 
         public void CreateTXT()
@@ -26,52 +29,28 @@ namespace Prog_Cursach
             {
                 int y = 0;
                 bool fl = true;
+                int h = rozryads + 1;
 
-                while (fl == true)
+                 while (fl)
                 {
-                    try
+                    for (int i = 0; i < 92 && fl; i++)
                     {
-                        y = reader.ReadInt32();
-                        writer.Write(y + " ");
+                        try
+                        {
+                            y = reader.ReadInt32();
+                            writer.Write(String.Format("{0,11}",y));
+                        }
+                        catch (EndOfStreamException e)
+                        {
+                            fl = false;
+                        }
                     }
-                    catch (EndOfStreamException e)
-                    {
-                        fl = false;
-                    }
-
+                    writer.WriteLine();
                 }
             }
 
             File.Delete(nameMain);
         }
 
-
-        public void CreateTXT(int n)
-        {
-
-            using (StreamWriter writer = new StreamWriter(outName, false))
-            using (FileStream file = File.OpenRead(nameMain))
-            using (BinaryReader reader = new BinaryReader(file))
-            {
-                int y = 0,
-                    count = 0;
-                bool fl = true;
-
-                while (count < n)
-                {
-                    count++;
-                    try
-                    {
-                        y = reader.ReadInt32();
-                        writer.Write(y + " ");
-                    }
-                    catch (EndOfStreamException e)
-                    {
-                        fl = false;
-                    }
-
-                }
-            }
-        }
     }
 }

@@ -13,13 +13,15 @@ namespace Prog_Cursach
              nameF1 = "f1.txt",
                 nameF2 = "f2.txt",
             nameOut = "";
-        int count = 0;
+        int count = 0,
+            rozr;
 
-        public Merge_Sort(string name,int n,string nameOut)
+        public Merge_Sort(string name,int n,string nameOut,int rozr)
         {
             nameMain = name;
             count = n;
             this.nameOut = nameOut;
+            this.rozr = rozr;
         }
 
         public void MakeSort()
@@ -206,7 +208,7 @@ namespace Prog_Cursach
             File.Delete(nameF1);
             File.Delete(nameF2);
 
-            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
+            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut,rozr);
             outFile.CreateTXT();
         }
         

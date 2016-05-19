@@ -40,13 +40,40 @@ namespace Prog_Cursach
             {
                 for (int i = 0; i < count; i++)
                 {
-                    int c = random.Next(max) - random.Next(min);
-                    wrotrFront.Write(c);
-                    start.Write(c+ " ");
-                    wrotrNature.Write(c);
-                    wrotrMulti.Write(c);
+                        int c = random.Next(max) - random.Next(min);
+                        wrotrFront.Write(c);
+                        //start.Write(c + " ");
+                        wrotrNature.Write(c);
+                        wrotrMulti.Write(c);
                 }
             }
+
+           
+            using (StreamWriter start = new StreamWriter(@"start.txt"))
+            using (FileStream writerFront = File.OpenRead(nameFront))
+            using (BinaryReader wrotrFront = new BinaryReader(writerFront))
+            {
+                bool fl = true;
+
+                while(fl)
+                {
+                    for (int i = 0; i < 92 && fl; i++)
+                    {
+                        try
+                        {
+                            int c = wrotrFront.ReadInt32();
+                            start.Write(String.Format("{0,11}", c));
+                        }
+                        catch(EndOfStreamException e)
+                        {
+                            fl = false;
+                        }
+                    }
+                    start.WriteLine();
+                }
+
+            }
+            
         }
     }
 }

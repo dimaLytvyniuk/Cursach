@@ -4,18 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prog_Cursach"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        mc:Ignorable="d" Height="424.51" Width="794.608" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="button_Res" Content="Виконати сортування" HorizontalAlignment="Left" Margin="328,251,0,0" VerticalAlignment="Top" Width="161" Height="40" Click="button_Res_Click" RenderTransformOrigin="0.818,1.05"/>
-        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="34,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181"/>
-        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="34,23,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="34,96,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="34,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181"/>
-        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="34,174,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="34,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181"/>
-        <Button x:Name="buttonStart" Content="Заповнити значення" HorizontalAlignment="Left" Margin="34,251,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="buttonStart_Click"/>
-        <Label x:Name="label_Finish" Content="Сортування виконано" HorizontalAlignment="Left" Margin="328,23,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden"/>
+        <Button x:Name="button_Res" Content="Виконати сортування" HorizontalAlignment="Left" Margin="328,251,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="button_Res_Click" RenderTransformOrigin="0.818,1.05" FontFamily="Century Gothic" Background="White"/>
+        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="34,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="34,23,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="34,96,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="34,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="34,174,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="34,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Button x:Name="buttonStart" Content="Заповнити значення" HorizontalAlignment="Left" Margin="34,251,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="buttonStart_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
+        <Label x:Name="label_Finish" Content="Сортування виконано" HorizontalAlignment="Left" Margin="328,23,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden" FontFamily="Century Gothic"/>
 
     </Grid>
 </Window>

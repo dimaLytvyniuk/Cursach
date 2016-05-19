@@ -8,7 +8,7 @@ namespace Prog_Cursach
 {
     class Main_Sort
     {
-        int n, max, min;
+        int n, max, min, rozriads;
 
         string nameFront = "fileFront.txt",
            nameNature = "fileNature.txt",
@@ -29,8 +29,35 @@ namespace Prog_Cursach
             this.n = n;
             this.max = max;
             this.min = min;
+            rozriads = Rozriads();
+
         }
         
+        private int Rozriads()
+        {
+            int rozr = 0,
+                val = max,
+                rozrMin = 0;
+            
+            while(val!=0)
+            {
+                val=val/10;
+                rozr++;
+            }
+
+            val = Math.Abs(min);
+
+            while (val != 0)
+            {
+                val = val / 10;
+                rozrMin++;
+            }
+
+            if (rozr >= rozrMin)
+                return rozr;
+            else
+                return rozrMin;
+        }
 
         public void GenerateFiles()
         {
@@ -40,20 +67,20 @@ namespace Prog_Cursach
 
         public void Create_Merge()
         {
-            Merge_Sort sortMerge = new Merge_Sort(nameFront, n,OutMerge);
+            Merge_Sort sortMerge = new Merge_Sort(nameFront, n,OutMerge,rozriads);
             sortMerge.MakeSort();
         }
         
 
         public void CreateNature()
         {
-            Nature_Sorting sortNature = new Nature_Sorting(nameNature,OutNature);
+            Nature_Sorting sortNature = new Nature_Sorting(nameNature,OutNature,rozriads);
             sortNature.MakeSort();
         }
         
         public void CreateMulti()
         {
-            Multi_Sorting_2 sortMulti = new Multi_Sorting_2(nameMulti, n,OutMulti);
+            Multi_Sorting_2 sortMulti = new Multi_Sorting_2(nameMulti, n,OutMulti,rozriads);
             sortMulti.MakeSort();
         }
 
