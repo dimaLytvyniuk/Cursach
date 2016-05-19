@@ -28,7 +28,8 @@ namespace Prog_Cursach
             this.nameOut = nameOut;
 
             n = count;
-            m = (int)(Math.Round(Math.Sqrt(n)));
+            //m = (int)(Math.Round(Math.Sqrt(n)));
+            m = 5;
 
             namesA = new string[m];
             namesB = new string[m];
@@ -83,7 +84,7 @@ namespace Prog_Cursach
             bool fl = true;
             bool[] fl1 = new bool[m];
 
-            CreateToCompare();
+            //CreateToCompare();
 
             for (int i = 0; i < m; i++)
             {
