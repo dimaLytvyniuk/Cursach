@@ -30,45 +30,75 @@ namespace Prog_Cursach
         {
             label_Finish.Visibility = Visibility.Hidden;
 
-            n = Convert.ToInt32(textBoxN.Text);
-            max = Convert.ToInt32(textBoxMax.Text);
-            min = Convert.ToInt32(textBoxMin.Text);
+            try {
+                n = Convert.ToInt32(textBoxN.Text);
+                max = Convert.ToInt32(textBoxMax.Text);
+                min = Convert.ToInt32(textBoxMin.Text);
 
-            int y = 0;
+                if (min > max)
+                {
+                    int y = max;
+                    max = min;
+                    min = max;
+                }
+
+                button_Res.Visibility = Visibility.Visible;
+            }
+            catch(Exception e1)
+            {
+                MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+            }
+
         }
  
         public MainWindow()
         {
             InitializeComponent();
+            labelMax.Content ="<  2 147 483 648";
+            labelMin.Content = "> -2 147 483 648";
+
+            label_Finish.Visibility = Visibility.Hidden;
+            button_Res.Visibility = Visibility.Hidden;
+            tabStatistic.Visibility = Visibility.Hidden;
+            label_Statist.Visibility = Visibility.Hidden;
         }
 
         private void button_Res_Click(object sender, RoutedEventArgs e)
         {
             label_Finish.Visibility = Visibility.Hidden;
-            
+
+            Stopwatch mergeWatch = new Stopwatch(),
+              natureWatch = new Stopwatch(),
+              multiWatch = new Stopwatch();
+
             Main_Sort sort = new Main_Sort(n,max,min);
+
             sort.GenerateFiles();
 
-
+            natureWatch.Start();
             sort.CreateNature();
+            natureWatch.Stop();
 
+            mergeWatch.Start();
             sort.Create_Merge();
+            mergeWatch.Stop();
 
-
-
-            //Stopwatch stopWatch = new Stopwatch();
-
-            //stopWatch.Start();
-
+            multiWatch.Start();
             sort.CreateMulti();
+            multiWatch.Stop();
+
+            TimeSpan ts = mergeWatch.Elapsed;
+            timeMerge.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
+
+            ts = natureWatch.Elapsed;
+            timeNature.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
+
+            ts = multiWatch.Elapsed;
+            timeMulti.Text= timeMerge.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
 
             label_Finish.Visibility = Visibility.Visible;
-
-            //stopWatch.Stop();
-            //TimeSpan ts = stopWatch.Elapsed;
-
-            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-
+            label_Statist.Visibility = Visibility.Visible;
+            tabStatistic.Visibility = Visibility.Visible;
 
         }
     }

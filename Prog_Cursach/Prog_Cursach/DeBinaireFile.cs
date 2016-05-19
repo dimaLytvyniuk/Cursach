@@ -12,13 +12,10 @@ namespace Prog_Cursach
         private string nameMain="",
             outName = "";
 
-        int max, min, rozryads;
-
-        public DeBinaireFile(string inName,string outputName,int rozryads)
+        public DeBinaireFile(string inName,string outputName)
         {
             nameMain = inName;
             outName = outputName;
-            this.rozryads = rozryads;
         }
 
         public void CreateTXT()
@@ -29,7 +26,6 @@ namespace Prog_Cursach
             {
                 int y = 0;
                 bool fl = true;
-                int h = rozryads + 1;
 
                  while (fl)
                 {

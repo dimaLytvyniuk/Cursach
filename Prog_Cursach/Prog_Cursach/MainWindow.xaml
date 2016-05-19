@@ -4,17 +4,54 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prog_Cursach"
-        mc:Ignorable="d" Height="424.51" Width="794.608" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" Height="424.51" Width="905.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="button_Res" Content="Виконати сортування" HorizontalAlignment="Left" Margin="328,251,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="button_Res_Click" RenderTransformOrigin="0.818,1.05" FontFamily="Century Gothic" Background="White"/>
-        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="34,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="34,23,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="34,96,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="34,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="34,174,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="34,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Button x:Name="buttonStart" Content="Заповнити значення" HorizontalAlignment="Left" Margin="34,251,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="buttonStart_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
-        <Label x:Name="label_Finish" Content="Сортування виконано" HorizontalAlignment="Left" Margin="328,23,0,0" VerticalAlignment="Top" Width="161" Visibility="Hidden" FontFamily="Century Gothic"/>
+        <Button x:Name="button_Res" Content="Виконати сортування" HorizontalAlignment="Left" Margin="309,298,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="button_Res_Click" RenderTransformOrigin="0.818,1.05" FontFamily="Century Gothic" Background="White"/>
+        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="19,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="21,23,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="19,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="19,188,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="19,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
+        <Button x:Name="buttonStart" Content="Заповнити значення" HorizontalAlignment="Left" Margin="19,298,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="buttonStart_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
+        <Label x:Name="label_Finish" Content="Сортування виконано" HorizontalAlignment="Left" Margin="309,23,0,0" VerticalAlignment="Top" Width="161" FontFamily="Century Gothic"/>
+        <Label x:Name="labelMax" Content="" HorizontalAlignment="Left" Margin="207,129,0,0" VerticalAlignment="Top"  FontFamily="Century Gothic"/>
+        <Label x:Name="labelMin" Content="" HorizontalAlignment="Left" Margin="207,197,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="label_Statist" Content="Статистика:" HorizontalAlignment="Left" Margin="574,22,0,0" VerticalAlignment="Top"  FontFamily="Century Gothic"/>
+        <TabControl x:Name="tabStatistic" HorizontalAlignment="Left" Height="285" Margin="574,53,0,0" VerticalAlignment="Top" Width="304" FontFamily="Century Gothic">
+            <TabItem Header="Пряме злиття">
+                <Grid Background="#FFFBFBFB">
+                    <TextBox x:Name="timeMerge" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label3" Content="Час роботи" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label4" Content="Кількість порівнянь" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="porMerge" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label5" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="pereMerge" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Природнє злиття">
+                <Grid Background="#FFFBFBFB">
+                    <TextBox x:Name="timeNature" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label3_Copy" Content="Час роботи" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label4_Copy" Content="Кількість порівнянь" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="porNature" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label5_Copy" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="pereNature" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Сбалансоване багатошляхове">
+                <Grid Background="#FFFBFBFB">
+                    <TextBox x:Name="timeMulti" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label3_Copy1" Content="Час роботи" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label4_Copy1" Content="Кількість порівнянь" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="porMulti" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Label x:Name="label5_Copy1" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="pereMulti" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
 
     </Grid>
 </Window>
