@@ -13,17 +13,19 @@ namespace Prog_Cursach
             nameMulti = "";
 
         private int count = 0,
-            max = 0;
+            max = 0,
+            min = 0;
 
         Random random = new Random();
 
-        public Generate_files(string nameF1, string nameF2, string nameF3,int n,int maxi)
+        public Generate_files(string nameF1, string nameF2, string nameF3,int n,int maxi,int min)
         {
             nameFront = nameF1;
             nameNature = nameF2;
             nameMulti = nameF3;
             count = n;
-            max = maxi;
+            max =maxi;
+            this.min = Math.Abs(min);
         }
 
         public void Generate()
@@ -38,11 +40,11 @@ namespace Prog_Cursach
             {
                 for (int i = 0; i < count; i++)
                 {
-                    int a = random.Next(2*max) - max;
-                    wrotrFront.Write(a);
-                    start.Write(a + " ");
-                    wrotrNature.Write(a);
-                    wrotrMulti.Write(a);
+                    int c = random.Next(max) - random.Next(min);
+                    wrotrFront.Write(c);
+                    start.Write(c+ " ");
+                    wrotrNature.Write(c);
+                    wrotrMulti.Write(c);
                 }
             }
         }

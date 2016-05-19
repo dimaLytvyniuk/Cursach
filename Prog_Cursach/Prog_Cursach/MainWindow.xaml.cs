@@ -21,6 +21,22 @@ namespace Prog_Cursach
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        int n = 0,
+            max = 0,
+            min = 0;
+
+        private void buttonStart_Click(object sender, RoutedEventArgs e)
+        {
+            label_Finish.Visibility = Visibility.Hidden;
+
+            n = Convert.ToInt32(textBoxN.Text);
+            max = Convert.ToInt32(textBoxMax.Text);
+            min = Convert.ToInt32(textBoxMin.Text);
+
+            int y = 0;
+        }
+ 
         public MainWindow()
         {
             InitializeComponent();
@@ -28,28 +44,32 @@ namespace Prog_Cursach
 
         private void button_Res_Click(object sender, RoutedEventArgs e)
         {
-            Main_Sort sort = new Main_Sort();
+            label_Finish.Visibility = Visibility.Hidden;
+            
+            Main_Sort sort = new Main_Sort(n,max,min);
             sort.GenerateFiles();
 
 
-            //sort.CreateNature();
+            sort.CreateNature();
 
-            //sort.Create_Merge();
+            sort.Create_Merge();
 
 
 
-            Stopwatch stopWatch = new Stopwatch();
+            //Stopwatch stopWatch = new Stopwatch();
 
-            stopWatch.Start();
+            //stopWatch.Start();
 
             sort.CreateMulti();
 
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
+            label_Finish.Visibility = Visibility.Visible;
 
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            //stopWatch.Stop();
+            //TimeSpan ts = stopWatch.Elapsed;
 
-            int x = 0;
+            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+
+
         }
     }
 }

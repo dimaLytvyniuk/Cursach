@@ -28,8 +28,8 @@ namespace Prog_Cursach
             this.nameOut = nameOut;
 
             n = count;
-            //m = (int)(Math.Round(Math.Sqrt(n)));
-            m = 5;
+            m = n/22000;
+
 
             namesA = new string[m];
             namesB = new string[m];
@@ -84,7 +84,7 @@ namespace Prog_Cursach
             bool fl = true;
             bool[] fl1 = new bool[m];
 
-            //CreateToCompare();
+            CreateToCompare();
 
             for (int i = 0; i < m; i++)
             {
@@ -153,15 +153,10 @@ namespace Prog_Cursach
 
                     currentFile.Write(marker);
 
-            }
-
-            for (int i = 0; i < m; i++)
-            {
-                writers[i].Close();
-                files[i].Close();
-
-                DeBinaireFile binar=new DeBinaireFile(namesA[i], "LOL#" + i);
-                binar.CreateTXT(true);
+                for(int i=0;i< m;i++)
+                {
+                    writers[i].Close();
+                }
             }
         }
 
@@ -248,11 +243,6 @@ namespace Prog_Cursach
                         opening[tmp] = true;
                     }
 
-                   
-
-                   /* if (AnyTrue(flOpen, count))
-                        opens = true;
-                        */
 
                     while (AnyTrue(flOpen,count))
                     {
@@ -336,7 +326,7 @@ namespace Prog_Cursach
                 s = namesA[0];
 
             DeBinaireFile outFile = new DeBinaireFile(s, nameOut);
-            outFile.CreateTXT(n);
+            outFile.CreateTXT();
 
 
         }
