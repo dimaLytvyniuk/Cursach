@@ -25,10 +25,16 @@ namespace Prog_Cursach
         int n = 0,
             max = 0,
             min = 0;
+        bool canMake = false, canMergeShow = false,
+            canNatureShow = false,
+            canMultiShow = false;
+
+        Main_Sort sort;
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            label_Finish.Visibility = Visibility.Hidden;
+
+            
 
             try {
                 n = Convert.ToInt32(textBoxN.Text);
@@ -42,64 +48,152 @@ namespace Prog_Cursach
                     min = max;
                 }
 
-                button_Res.Visibility = Visibility.Visible;
+                if (n > 0)
+                {
+                    sort = new Main_Sort(n, max, min);
+                    canMake = true;
+
+                    buttonStart.Cursor = Cursors.Wait;
+                    sort.GenerateFiles();
+                    buttonStart.Cursor = Cursors.Arrow;
+                }
+                else
+                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+
             }
             catch(Exception e1)
             {
                 MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
             }
+                
+        }
+
+
+        private void button_showNature_Click(object sender, RoutedEventArgs e)
+        {
+            if (canNatureShow)
+                sort.ShowNature();
+            else
+                MessageBox.Show("Ви не виконали сортування природнім злиттям", "Error");
+        }
+
+
+        private void button_resMerge_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (canMake)
+            {
+                Stopwatch mergeWatch = new Stopwatch();
+                button_resMerge.Cursor = Cursors.Wait;
+
+                mergeWatch.Start();
+                sort.Create_Merge();
+                mergeWatch.Stop();
+
+                TimeSpan ts = mergeWatch.Elapsed;
+                timeMerge.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
+
+                pereMerge.Text = sort.PereMerge.ToString();
+                porMerge.Text = sort.PorMerge.ToString();
+
+                button_resMerge.Cursor = Cursors.Arrow;
+                canMergeShow = true;
+                MessageBox.Show("Сортування прямим злиттям виконано","Message");
+            }
+            else
+                MessageBox.Show("Ви не ввели прямим злиттям вхідні дані", "Error");
+        }
+
+        private void button_showMerge_Click(object sender, RoutedEventArgs e)
+        {
+            if (canMergeShow)
+                sort.ShowMerge();
+            else
+                MessageBox.Show("Ви не виконали сортування прямим злиттям", "Error");
 
         }
- 
+
+        private void buttonStartShow_Click(object sender, RoutedEventArgs e)
+        {
+            if (canMake)
+                sort.ShowStart();
+            else
+                MessageBox.Show("Ви не ввели вхідні дані", "Error");
+        }
+
+        private void button_resMulti_Click(object sender, RoutedEventArgs e)
+        {
+            if (canMake)
+            {
+                Stopwatch multiWatch = new Stopwatch();
+                button_resMulti.Cursor = Cursors.Wait;
+
+                multiWatch.Start();
+                sort.CreateMulti();
+                multiWatch.Stop();
+
+                TimeSpan ts = multiWatch.Elapsed;
+                timeMulti.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
+
+                porMulti.Text = sort.PorMulti.ToString();
+                pereMulti.Text = sort.PereMulti.ToString();
+
+                button_resMulti.Cursor = Cursors.Arrow;
+                canMultiShow = true;
+
+                MessageBox.Show("Сортування збалансованим багатошляховим злиттям виконано", "Message");
+            }
+            else
+                MessageBox.Show("Ви не ввели вхідні дані", "Error");
+        }
+
+        private void button_showMulti_Click(object sender, RoutedEventArgs e)
+        {
+            if (canMultiShow)
+                sort.ShowMulti();
+            else
+                MessageBox.Show("Ви не виконали сортування збалансованим багатошляховим злиттям", "Error");
+        }
+
+        private void button_resNature_Click(object sender, RoutedEventArgs e)
+        {
+            if (canMake)
+            {
+                Stopwatch natureWatch = new Stopwatch();
+                button_resNature.Cursor = Cursors.Wait;
+
+                natureWatch.Start();
+                sort.CreateNature();
+                natureWatch.Stop();
+
+                TimeSpan ts = natureWatch.Elapsed;
+                timeNature.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
+
+                porNature.Text = sort.PorNature.ToString();
+                pereNature.Text = sort.PereNature.ToString();
+
+                button_resNature.Cursor = Cursors.Arrow;
+                canNatureShow = true;
+
+                MessageBox.Show("Сортування природнім злиттям виконано", "Message");
+            }
+            else
+                MessageBox.Show("Ви не ввели вхідні дані", "Error");
+        }
+
+        private void button_ShowRes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public MainWindow()
         {
             InitializeComponent();
             labelMax.Content ="<  2 147 483 648";
             labelMin.Content = "> -2 147 483 648";
+            labelN.Content = "0  <";
 
-            label_Finish.Visibility = Visibility.Hidden;
-            button_Res.Visibility = Visibility.Hidden;
-            tabStatistic.Visibility = Visibility.Hidden;
-            label_Statist.Visibility = Visibility.Hidden;
+            
         }
 
-        private void button_Res_Click(object sender, RoutedEventArgs e)
-        {
-            label_Finish.Visibility = Visibility.Hidden;
-
-            Stopwatch mergeWatch = new Stopwatch(),
-              natureWatch = new Stopwatch(),
-              multiWatch = new Stopwatch();
-
-            Main_Sort sort = new Main_Sort(n,max,min);
-
-            sort.GenerateFiles();
-
-            natureWatch.Start();
-            sort.CreateNature();
-            natureWatch.Stop();
-
-            mergeWatch.Start();
-            sort.Create_Merge();
-            mergeWatch.Stop();
-
-            multiWatch.Start();
-            sort.CreateMulti();
-            multiWatch.Stop();
-
-            TimeSpan ts = mergeWatch.Elapsed;
-            timeMerge.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
-
-            ts = natureWatch.Elapsed;
-            timeNature.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
-
-            ts = multiWatch.Elapsed;
-            timeMulti.Text= timeMerge.Text = String.Format("{0:00}", ts.Minutes) + " хвилин " + String.Format("{0:00}", ts.Seconds) + " секунд " + String.Format("{0:00}", ts.Milliseconds) + " мілісекунд";
-
-            label_Finish.Visibility = Visibility.Visible;
-            label_Statist.Visibility = Visibility.Visible;
-            tabStatistic.Visibility = Visibility.Visible;
-
-        }
     }
 }

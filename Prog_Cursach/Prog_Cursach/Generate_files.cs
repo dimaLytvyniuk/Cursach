@@ -16,6 +16,9 @@ namespace Prog_Cursach
             max = 0,
             min = 0;
 
+        bool fl = true,
+            fl1 = true;
+
         Random random = new Random();
 
         public Generate_files(string nameF1, string nameF2, string nameF3,int n,int maxi,int min)
@@ -24,13 +27,27 @@ namespace Prog_Cursach
             nameNature = nameF2;
             nameMulti = nameF3;
             count = n;
-            max =maxi;
-            this.min = Math.Abs(min);
+
+            if (maxi > 0)
+                max = maxi;
+            else
+            {
+                fl = false;
+                max = Math.Abs(maxi);
+            }
+
+            if (min < 0)
+            {
+                this.min = Math.Abs(min);
+                fl1 = false;
+            }
+            else
+                this.min = min;
         }
 
         public void Generate()
         {
-            using (StreamWriter start = new StreamWriter(@"start.txt"))
+
             using (FileStream writerFront = File.Create(nameFront))
             using (BinaryWriter wrotrFront = new BinaryWriter(writerFront))
             using (FileStream writerNature = File.Create(nameNature))
@@ -38,42 +55,28 @@ namespace Prog_Cursach
             using (FileStream writerMulti = File.Create(nameMulti))
             using (BinaryWriter wrotrMulti = new BinaryWriter(writerMulti))
             {
+                int c = 0;
                 for (int i = 0; i < count; i++)
                 {
-                        int c = random.Next(max) - random.Next(min);
-                        wrotrFront.Write(c);
-                        //start.Write(c + " ");
-                        wrotrNature.Write(c);
-                        wrotrMulti.Write(c);
-                }
-            }
 
-           
-            using (StreamWriter start = new StreamWriter(@"start.txt"))
-            using (FileStream writerFront = File.OpenRead(nameFront))
-            using (BinaryReader wrotrFront = new BinaryReader(writerFront))
-            {
-                bool fl = true;
-
-                while(fl)
-                {
-                    for (int i = 0; i < 92 && fl; i++)
+                    if (fl && !fl1)
+                        c = random.Next(max + 1) - random.Next(min + 1);
+                    else
                     {
-                        try
+                        if(!fl && !fl1)
+                        c = -(random.Next(max+1, min+1));
+                        else
                         {
-                            int c = wrotrFront.ReadInt32();
-                            start.Write(String.Format("{0,11}", c));
-                        }
-                        catch(EndOfStreamException e)
-                        {
-                            fl = false;
+                            c = random.Next(min - 1, max + 1);
                         }
                     }
-                    start.WriteLine();
-                }
 
+                    wrotrFront.Write(c);
+                    wrotrNature.Write(c);
+                    wrotrMulti.Write(c);
+                }
             }
-            
+
         }
     }
 }

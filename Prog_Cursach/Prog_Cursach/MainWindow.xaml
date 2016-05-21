@@ -3,22 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Prog_Cursach"
-        mc:Ignorable="d" Height="424.51" Width="905.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen">
+                
+        mc:Ignorable="d" Height="485.51" Width="949.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen" Icon="F:\C\DIMA\Univer\Op\Курсач\Cursach\Prog_Cursach\Prog_Cursach\bin\Debug\favicon.ico">
     <Grid>
-        <Button x:Name="button_Res" Content="Виконати сортування" HorizontalAlignment="Left" Margin="309,298,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="button_Res_Click" RenderTransformOrigin="0.818,1.05" FontFamily="Century Gothic" Background="White"/>
-        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="19,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="21,23,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="19,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="19,188,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="19,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontFamily="Century Gothic"/>
-        <Button x:Name="buttonStart" Content="Заповнити значення" HorizontalAlignment="Left" Margin="19,298,0,0" VerticalAlignment="Top" Width="181" Height="40" Click="buttonStart_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
-        <Label x:Name="label_Finish" Content="Сортування виконано" HorizontalAlignment="Left" Margin="309,23,0,0" VerticalAlignment="Top" Width="161" FontFamily="Century Gothic"/>
-        <Label x:Name="labelMax" Content="" HorizontalAlignment="Left" Margin="207,129,0,0" VerticalAlignment="Top"  FontFamily="Century Gothic"/>
-        <Label x:Name="labelMin" Content="" HorizontalAlignment="Left" Margin="207,197,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
-        <Label x:Name="label_Statist" Content="Статистика:" HorizontalAlignment="Left" Margin="574,22,0,0" VerticalAlignment="Top"  FontFamily="Century Gothic"/>
-        <TabControl x:Name="tabStatistic" HorizontalAlignment="Left" Height="285" Margin="574,53,0,0" VerticalAlignment="Top" Width="304" FontFamily="Century Gothic">
+        <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="92,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" FontFamily="Century Gothic"/>
+        <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="94,29,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <Label x:Name="label1" Content="Введіть максимальне значення" HorizontalAlignment="Left" Margin="92,105,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMax" HorizontalAlignment="Left" Height="23" Margin="92,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" FontFamily="Century Gothic"/>
+        <Label x:Name="label2" Content="Введіть мінімальне значення" HorizontalAlignment="Left" Margin="92,194,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TextBox x:Name="textBoxMin" HorizontalAlignment="Left" Height="23" Margin="92,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196" FontFamily="Century Gothic"/>
+        <Button x:Name="buttonStart" Content="Створити вхідний файл" HorizontalAlignment="Left" Margin="92,310,0,0" VerticalAlignment="Top" Width="196" Height="40" Click="buttonStart_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
+        <Label x:Name="labelMax" Content="" HorizontalAlignment="Left" Margin="305,148,0,0" VerticalAlignment="Top"  FontFamily="Century Gothic"/>
+        <Label x:Name="labelMin" Content="" HorizontalAlignment="Left" Margin="305,237,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
+        <TabControl x:Name="tabStatistic" HorizontalAlignment="Left" Height="403" Margin="581,30,0,0" VerticalAlignment="Top" Width="304" FontFamily="Century Gothic">
             <TabItem Header="Пряме злиття">
                 <Grid Background="#FFFBFBFB">
                     <TextBox x:Name="timeMerge" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
@@ -27,6 +26,8 @@
                     <TextBox x:Name="porMerge" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
                     <Label x:Name="label5" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="pereMerge" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Button x:Name="button_resMerge" Content="Виконати сортування" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_resMerge_Click_1"/>
+                    <Button x:Name="button_showMerge" Content="Показати вихідний файл" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_showMerge_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Природнє злиття">
@@ -37,10 +38,12 @@
                     <TextBox x:Name="porNature" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
                     <Label x:Name="label5_Copy" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="pereNature" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Button x:Name="button_resNature" Content="Виконати сортування" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_resNature_Click"/>
+                    <Button x:Name="button_showNature" Content="Показати вихідний файл" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_showNature_Click"/>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Сбалансоване багатошляхове">
+            <TabItem Header="Сбалансоване багатошляхове злиття">
                 <Grid Background="#FFFBFBFB">
                     <TextBox x:Name="timeMulti" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
                     <Label x:Name="label3_Copy1" Content="Час роботи" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -48,10 +51,14 @@
                     <TextBox x:Name="porMulti" HorizontalAlignment="Left" Height="23" Margin="10,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
                     <Label x:Name="label5_Copy1" Content="Кількість перестановок" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="pereMulti" HorizontalAlignment="Left" Height="23" Margin="10,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" IsReadOnly="True"/>
+                    <Button x:Name="button_resMulti" Content="Виконати сортування" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_resMulti_Click"/>
+                    <Button x:Name="button_showMulti" Content="Показати вихідний файл" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top"  Width="278" Height="40" Background="White" Click="button_showMulti_Click"/>
                 </Grid>
             </TabItem>
 
         </TabControl>
+        <Label x:Name="labelN" Content="" HorizontalAlignment="Left" Margin="60,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,0.577" Height="23" />
+        <Button x:Name="buttonStartShow" Content="Показати початковий файл" HorizontalAlignment="Left" Margin="94,377,0,0" VerticalAlignment="Top" Width="196" Height="40" Click="buttonStartShow_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
 
     </Grid>
 </Window>

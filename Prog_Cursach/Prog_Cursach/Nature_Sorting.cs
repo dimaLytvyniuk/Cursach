@@ -15,6 +15,24 @@ namespace Prog_Cursach
             nameOut = "";
         const int marker = Int32.MaxValue;
 
+        private int por = 0,
+               pere = 0;
+
+        public int Por { get { return por; } }
+        public int Pere { get { return pere; } }
+
+        internal DeBinaireFile DeBinaireFile
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
         public Nature_Sorting(string name,string nameOut)
         {
             nameMain = name;
@@ -23,7 +41,7 @@ namespace Prog_Cursach
 
         public void MakeSort()
         {
-            int a1 = 0, a2 = 0, k = 1, mark;
+            int a1 = 0, a2 = 0, mark;
 
             bool fl = true,
                fl1 = true,
@@ -67,6 +85,7 @@ namespace Prog_Cursach
 
                     while (fl == true)
                     {
+                        por++;
                         if (a2 < a1)
                         {
                             if (mark == 1)
@@ -149,6 +168,7 @@ namespace Prog_Cursach
 
                         while (a1 != marker && a2 != marker)
                         {
+                            por++;
                             if (a1 <= a2)
                             {
                                 f.Write(a1);
@@ -165,7 +185,7 @@ namespace Prog_Cursach
                             else
                             {
                                 f.Write(a2);
-
+                                pere++;
                                 try
                                 {
                                     a2 = f2.ReadInt32();
@@ -261,7 +281,7 @@ namespace Prog_Cursach
             File.Delete(nameF2);
 
             DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
-            outFile.CreateTXT();
+            outFile.CreateTXT(true);
         }
 
     }

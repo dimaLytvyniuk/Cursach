@@ -13,15 +13,31 @@ namespace Prog_Cursach
              nameF1 = "f1.txt",
                 nameF2 = "f2.txt",
             nameOut = "";
-        int count = 0,
-            rozr;
+        int count = 0;
 
-        public Merge_Sort(string name,int n,string nameOut,int rozr)
+        private int por = 0,
+          pere = 0;
+
+        public int Por { get { return por; } }
+        public int Pere { get { return pere; } }
+
+        internal DeBinaireFile DeBinaireFile
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
+
+        public Merge_Sort(string name,int n,string nameOut)
         {
             nameMain = name;
             count = n;
             this.nameOut = nameOut;
-            this.rozr = rozr;
         }
 
         public void MakeSort()
@@ -112,6 +128,8 @@ namespace Prog_Cursach
 
                         while (i < k && j < k && (fl == true) && (fl1 == true))
                         {
+                            por++;
+
                             if (a1 < a2)
                             {
                                 f.Write(a1);
@@ -129,6 +147,7 @@ namespace Prog_Cursach
                             {
 
                                 f.Write(a2);
+                                pere++;
                                 try
                                 {
                                     a2 = f2.ReadInt32();
@@ -143,8 +162,8 @@ namespace Prog_Cursach
 
                         while (i < k && (fl))
                         {
-
                             f.Write(a1);
+
                             try
                             {
                                 a1 = f1.ReadInt32();
@@ -158,8 +177,8 @@ namespace Prog_Cursach
 
                         while (j < k && (fl1))
                         {
-
                             f.Write(a2);
+
                             try
                             {
                                 a2 = f2.ReadInt32();
@@ -174,7 +193,6 @@ namespace Prog_Cursach
 
                     while (fl)
                     {
-
                         f.Write(a1);
                         try
                         {
@@ -188,8 +206,8 @@ namespace Prog_Cursach
 
                     while (fl1)
                     {
-
                         f.Write(a2);
+
                         try
                         {
                             a2 = f2.ReadInt32();
@@ -208,8 +226,8 @@ namespace Prog_Cursach
             File.Delete(nameF1);
             File.Delete(nameF2);
 
-            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut,rozr);
-            outFile.CreateTXT();
+            DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
+            outFile.CreateTXT(true);
         }
         
     }

@@ -11,10 +11,14 @@ namespace Prog_Cursach
     {
         const int marker = Int32.MaxValue;
 
+        private int por = 0,
+                pere = 0;
+
+        public int Por { get { return por; } }
+        public int Pere { get { return pere; } }
+
         int n = 0,
-           lim = 0,
-           m = 0,
-            rozr;
+           m = 0;
 
         string nameMain = "",
             nameOut = "";
@@ -23,34 +27,24 @@ namespace Prog_Cursach
             namesB;
 
 
-        public Multi_Sorting_2(string name, int count,string nameOut,int rozr)
+        public Multi_Sorting_2(string name, int count,string nameOut)
         {
             nameMain = name;
             this.nameOut = nameOut;
-            this.rozr = rozr;
             n = count;
 
             if (n < 50000)
-                m = 3;
-            else
-                m = n / 20000 +1;
+                m = 5;
+            // else
+            //m = n / 19000 +1;
 
+            m = 10;
 
             namesA = new string[m];
             namesB = new string[m];
         }
 
         Random random = new Random();
-
-        private void CreateToCompare()
-        {
-            double r = Math.Sqrt(n);
-
-            if (m > r)
-                lim = m;
-            else
-                lim = m + 1;
-        }
 
         private bool AnyTrue(bool[] gap,int c)
         {
@@ -89,8 +83,6 @@ namespace Prog_Cursach
             bool fl = true;
             bool[] fl1 = new bool[m];
 
-            CreateToCompare();
-
             for (int i = 0; i < m; i++)
             {
                 fl1[i] = true;
@@ -128,6 +120,8 @@ namespace Prog_Cursach
 
                 while (fl == true)
                 {
+                    por++;
+
                     if (a1 < a2)
                     {
                         currentFile.Write(a2);
@@ -263,8 +257,10 @@ namespace Prog_Cursach
 
                         for (int i = 0; i < count; i++)
                         {
+                            
                             if (fl[i] && flOpen[i])
                             {
+                                por++;
                                 if (min > last[i])
                                 {
                                     min = last[i];
@@ -273,7 +269,9 @@ namespace Prog_Cursach
                             }
                         }
 
-                        
+                        if (tmp !=l)
+                        pere++;
+
                             currentFile.Write(last[l]);
 
                         try
@@ -330,10 +328,8 @@ namespace Prog_Cursach
             else
                 s = namesA[0];
 
-            DeBinaireFile outFile = new DeBinaireFile(s, nameOut,rozr);
-            outFile.CreateTXT();
-
-
+            DeBinaireFile outFile = new DeBinaireFile(s, nameOut);
+            outFile.CreateTXT(n);
         }
 
         private void DeleteFiles()
@@ -351,6 +347,18 @@ namespace Prog_Cursach
             DivideFiles();
             SortFiles();
             DeleteFiles();
+        }
+
+        internal DeBinaireFile DeBinaireFile
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
         }
     }
 }
