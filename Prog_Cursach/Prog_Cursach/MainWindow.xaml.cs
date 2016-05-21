@@ -43,22 +43,22 @@ namespace Prog_Cursach
 
                 if (min > max)
                 {
-                    int y = max;
-                    max = min;
-                    min = max;
-                }
-
-                if (n > 0)
-                {
-                    sort = new Main_Sort(n, max, min);
-                    canMake = true;
-
-                    buttonStart.Cursor = Cursors.Wait;
-                    sort.GenerateFiles();
-                    buttonStart.Cursor = Cursors.Arrow;
+                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
                 }
                 else
-                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+                {
+                    if (n > 0)
+                    {
+                        sort = new Main_Sort(n, max, min);
+                        canMake = true;
+
+                        buttonStart.Cursor = Cursors.Wait;
+                        sort.GenerateFiles();
+                        buttonStart.Cursor = Cursors.Arrow;
+                    }
+                    else
+                        MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+                }
 
             }
             catch(Exception e1)

@@ -34,11 +34,17 @@ namespace Prog_Cursach
             n = count;
 
             if (n < 50000)
-                m = 5;
-            // else
-            //m = n / 19000 +1;
+                m = 3;
+            else
+            {
+                if (n > 2000000)
+                    m = 10;
+                else
+                    m = n / 25000;
+            }
 
-            m = 10;
+            if (m % 2 == 1)
+                m--;
 
             namesA = new string[m];
             namesB = new string[m];

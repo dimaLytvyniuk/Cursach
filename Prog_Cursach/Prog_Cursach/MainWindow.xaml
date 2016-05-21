@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Prog_Cursach"
                 
-        mc:Ignorable="d" Height="485.51" Width="949.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen" Icon="F:\C\DIMA\Univer\Op\Курсач\Cursach\Prog_Cursach\Prog_Cursach\bin\Debug\favicon.ico">
+        mc:Ignorable="d" Height="485.51" Width="949.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen" >
     <Grid>
         <TextBox x:Name="textBoxN" HorizontalAlignment="Left" Height="23" Margin="92,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" FontFamily="Century Gothic"/>
         <Label x:Name="label" Content="Введіть кількість елементів" HorizontalAlignment="Left" Margin="94,29,0,0" VerticalAlignment="Top" FontFamily="Century Gothic"/>
