@@ -43,22 +43,22 @@ namespace Prog_Cursach
 
                 if (min > max)
                 {
-                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+                    int y = max;
+                    max = min;
+                    min = max;
+                }
+
+                if (n > 0 && n<20000000)
+                {
+                    sort = new Main_Sort(n, max, min);
+                    canMake = true;
+
+                    buttonStart.Cursor = Cursors.Wait;
+                    sort.GenerateFiles();
+                    buttonStart.Cursor = Cursors.Arrow;
                 }
                 else
-                {
-                    if (n > 0)
-                    {
-                        sort = new Main_Sort(n, max, min);
-                        canMake = true;
-
-                        buttonStart.Cursor = Cursors.Wait;
-                        sort.GenerateFiles();
-                        buttonStart.Cursor = Cursors.Arrow;
-                    }
-                    else
-                        MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
-                }
+                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
 
             }
             catch(Exception e1)
@@ -191,7 +191,7 @@ namespace Prog_Cursach
             labelMax.Content ="<  2 147 483 648";
             labelMin.Content = "> -2 147 483 648";
             labelN.Content = "0  <";
-
+            labelNmax.Content = "<  20 000 000";
             
         }
 

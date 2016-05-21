@@ -18,8 +18,8 @@ namespace Prog_Cursach
         private int por = 0,
           pere = 0;
 
-        public int Por { get { return por; } }
-        public int Pere { get { return pere; } }
+        public Int64 Por { get { return por; } }
+        public Int64 Pere { get { return pere; } }
 
         internal DeBinaireFile DeBinaireFile
         {
