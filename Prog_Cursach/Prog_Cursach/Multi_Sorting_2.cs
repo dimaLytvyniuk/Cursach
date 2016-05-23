@@ -14,8 +14,8 @@ namespace Prog_Cursach
         private int por = 0,
                 pere = 0;
 
-        public int Por { get { return por; } }
-        public int Pere { get { return pere; } }
+        public Int64 Por { get { return por; } }
+        public Int64 Pere { get { return pere; } }
 
         int n = 0,
            m = 0;
@@ -34,11 +34,17 @@ namespace Prog_Cursach
             n = count;
 
             if (n < 50000)
-                m = 5;
-            // else
-            //m = n / 19000 +1;
+                m = 2;
+            else
+            {
+                if (n < 2500000)
+                    m = n / 25000;
+                else
+                    m = 100;
+            }
 
-            m = 10;
+            if (m % 2 == 1)
+                m--;
 
             namesA = new string[m];
             namesB = new string[m];

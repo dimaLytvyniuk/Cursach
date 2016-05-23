@@ -80,10 +80,8 @@ namespace Prog_Cursach
                     }
                 }
             }
-
             File.Delete(nameMain);
         }
-
         
     }
 }

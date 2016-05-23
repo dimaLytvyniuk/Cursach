@@ -48,7 +48,7 @@ namespace Prog_Cursach
                     min = max;
                 }
 
-                if (n > 0)
+                if (n > 0 && n<20000000)
                 {
                     sort = new Main_Sort(n, max, min);
                     canMake = true;
@@ -191,7 +191,7 @@ namespace Prog_Cursach
             labelMax.Content ="<  2 147 483 648";
             labelMin.Content = "> -2 147 483 648";
             labelN.Content = "0  <";
-
+            labelNmax.Content = "<  20 000 000";
             
         }
 

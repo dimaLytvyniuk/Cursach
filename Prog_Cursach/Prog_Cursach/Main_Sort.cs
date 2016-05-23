@@ -11,12 +11,12 @@ namespace Prog_Cursach
     {
         int n, max, min;
 
-        public int PereMulti { get; private set; }
-        public int PorMulti { get; private set; }
-        public int PereNature { get; private set; }
-        public int PorNature { get; private set; }
-        public int PereMerge { get; private set; }
-        public int PorMerge { get; private set; }
+        public Int64 PereMulti { get; private set; }
+        public Int64 PorMulti { get; private set; }
+        public Int64 PereNature { get; private set; }
+        public Int64 PorNature { get; private set; }
+        public Int64 PereMerge { get; private set; }
+        public Int64 PorMerge { get; private set; }
 
         string nameFront = "fileFront.txt",
            nameNature = "fileNature.txt",

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Prog_Cursach"
                 
         mc:Ignorable="d" Height="485.51" Width="949.393" Title="Зовнішнє сортування" WindowStartupLocation="CenterScreen" Icon="F:\C\DIMA\Univer\Op\Курсач\Cursach\Prog_Cursach\Prog_Cursach\bin\Debug\favicon.ico">
@@ -59,6 +58,7 @@
         </TabControl>
         <Label x:Name="labelN" Content="" HorizontalAlignment="Left" Margin="60,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,0.577" Height="23" />
         <Button x:Name="buttonStartShow" Content="Показати початковий файл" HorizontalAlignment="Left" Margin="94,377,0,0" VerticalAlignment="Top" Width="196" Height="40" Click="buttonStartShow_Click" Background="{x:Null}" FontFamily="Century Gothic"/>
+        <Label x:Name="labelNmax" Content="" HorizontalAlignment="Left" Margin="305,68,0,0" VerticalAlignment="Top" Height="23"/>
 
     </Grid>
 </Window>
