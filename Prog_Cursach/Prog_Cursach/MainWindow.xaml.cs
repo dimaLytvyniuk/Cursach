@@ -27,7 +27,9 @@ namespace Prog_Cursach
             min = 0;
         bool canMake = false, canMergeShow = false,
             canNatureShow = false,
-            canMultiShow = false;
+            canMultiShow = false,
+            canMerge = false,
+            canNature = false;
 
         Main_Sort sort;
 
@@ -52,6 +54,9 @@ namespace Prog_Cursach
                 {
                     sort = new Main_Sort(n, max, min);
                     canMake = true;
+
+                    canNature = true;
+                    canMerge = true;
 
                     buttonStart.Cursor = Cursors.Wait;
                     sort.GenerateFiles();
@@ -80,7 +85,7 @@ namespace Prog_Cursach
 
         private void button_resMerge_Click_1(object sender, RoutedEventArgs e)
         {
-            if (canMake)
+            if (canMerge)
             {
                 Stopwatch mergeWatch = new Stopwatch();
                 button_resMerge.Cursor = Cursors.Wait;
@@ -97,10 +102,12 @@ namespace Prog_Cursach
 
                 button_resMerge.Cursor = Cursors.Arrow;
                 canMergeShow = true;
+                canMerge = false;
+
                 MessageBox.Show("Сортування прямим злиттям виконано","Message");
             }
             else
-                MessageBox.Show("Ви не ввели прямим злиттям вхідні дані", "Error");
+                MessageBox.Show("Ви не маєте можливість виконати сортування", "Error");
         }
 
         private void button_showMerge_Click(object sender, RoutedEventArgs e)
@@ -156,7 +163,7 @@ namespace Prog_Cursach
 
         private void button_resNature_Click(object sender, RoutedEventArgs e)
         {
-            if (canMake)
+            if (canNature)
             {
                 Stopwatch natureWatch = new Stopwatch();
                 button_resNature.Cursor = Cursors.Wait;
@@ -173,11 +180,12 @@ namespace Prog_Cursach
 
                 button_resNature.Cursor = Cursors.Arrow;
                 canNatureShow = true;
+                canNature = false;
 
                 MessageBox.Show("Сортування природнім злиттям виконано", "Message");
             }
             else
-                MessageBox.Show("Ви не ввели вхідні дані", "Error");
+                MessageBox.Show("Ви не маєте можливість виконати сортування", "Error");
         }
 
         private void button_ShowRes_Click(object sender, RoutedEventArgs e)
