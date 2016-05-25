@@ -46,25 +46,25 @@ namespace Prog_Cursach
 
                 if (min > max)
                 {
-                    int y = max;
-                    max = min;
-                    min = max;
-                }
-
-                if (n > 0 && n<20000000)
-                {
-                    sort = new Main_Sort(n, max, min);
-                    canMake = true;
-
-                    canNature = true;
-                    canMerge = true;
-                    canMulti = true;
-                    
-                    sort.GenerateFiles();
-                 
+                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
                 }
                 else
-                    MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+                {
+                    if (n > 0 && n < 20000000)
+                    {
+                        sort = new Main_Sort(n, max, min);
+                        canMake = true;
+
+                        canNature = true;
+                        canMerge = true;
+                        canMulti = true;
+
+                        sort.GenerateFiles();
+
+                    }
+                    else
+                        MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
+                }
 
             }
             catch(Exception e1)
