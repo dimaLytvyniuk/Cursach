@@ -29,7 +29,8 @@ namespace Prog_Cursach
             canNatureShow = false,
             canMultiShow = false,
             canMerge = false,
-            canNature = false;
+            canNature = false,
+            canMulti = false;
 
         Main_Sort sort;
 
@@ -57,7 +58,7 @@ namespace Prog_Cursach
 
                     canNature = true;
                     canMerge = true;
-
+                    canMulti = true;
                     
                     sort.GenerateFiles();
                  
@@ -125,12 +126,12 @@ namespace Prog_Cursach
             if (canMake)
                 sort.ShowStart();
             else
-                MessageBox.Show("Ви не ввели вхідні дані", "Error");
+                MessageBox.Show("Ви не згенерували файл", "Error");
         }
 
         private void button_resMulti_Click(object sender, RoutedEventArgs e)
         {
-            if (canMake)
+            if (canMulti)
             {
                 Stopwatch multiWatch = new Stopwatch();
                 button_resMulti.Cursor = Cursors.Wait;
@@ -147,6 +148,7 @@ namespace Prog_Cursach
 
                 button_resMulti.Cursor = Cursors.Arrow;
                 canMultiShow = true;
+                canMulti = false;
 
                 MessageBox.Show("Сортування збалансованим багатошляховим злиттям виконано", "Message");
             }
