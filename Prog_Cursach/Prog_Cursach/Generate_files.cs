@@ -67,7 +67,7 @@ namespace Prog_Cursach
                         c = -(random.Next(max+1, min+1));
                         else
                         {
-                            c = random.Next(min - 1, max + 1);
+                            c = random.Next(min, max + 1);
                         }
                     }
 
