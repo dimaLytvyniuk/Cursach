@@ -35,8 +35,8 @@ namespace Prog_Cursach
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
+            buttonStart.Cursor = Cursors.Wait;
 
-            
 
             try {
                 n = Convert.ToInt32(textBoxN.Text);
@@ -58,9 +58,9 @@ namespace Prog_Cursach
                     canNature = true;
                     canMerge = true;
 
-                    buttonStart.Cursor = Cursors.Wait;
+                    
                     sort.GenerateFiles();
-                    buttonStart.Cursor = Cursors.Arrow;
+                 
                 }
                 else
                     MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
@@ -70,7 +70,8 @@ namespace Prog_Cursach
             {
                 MessageBox.Show("Ви ввели не коректні дані, повторіть запис", "Error");
             }
-                
+
+            buttonStart.Cursor = Cursors.Arrow;
         }
 
 
@@ -196,8 +197,8 @@ namespace Prog_Cursach
         public MainWindow()
         {
             InitializeComponent();
-            labelMax.Content ="<  2 147 483 648";
-            labelMin.Content = "> -2 147 483 648";
+            labelMax.Content ="<  2 147 483 647";
+            labelMin.Content = "> -2 147 483 647";
             labelN.Content = "0  <";
             labelNmax.Content = "<  20 000 000";
             

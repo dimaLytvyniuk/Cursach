@@ -163,6 +163,8 @@ namespace Prog_Cursach
                     writers[i].Close();
                 }
             }
+
+            File.Delete(nameMain);
         }
 
         public void SortFiles()
