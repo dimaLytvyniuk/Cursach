@@ -7,16 +7,16 @@ using System.IO;
 
 namespace Prog_Cursach
 {
-    class Nature_Sorting
+    class Nature_Sorting//природнє злиття 
     {
-        string nameMain = "",
-            nameF1 = @"fNature1.txt",
-            nameF2 = @"fNature2.txt",
-            nameOut = "";
-        const int marker = Int32.MaxValue;
+        string nameMain = "",//вхідний файл
+            nameF1 = @"fNature1.txt",//проміжний файл №1
+            nameF2 = @"fNature2.txt",//проміжний файл №2
+            nameOut = "";// вихідний файл
+        const int marker = Int32.MaxValue;//маркер кінця серії
 
-        private int por = 0,
-               pere = 0;
+        private int por = 0,//кількість порівннянь
+               pere = 0;//кількіість перестановок
 
         public Int64 Por { get { return por; } }
         public Int64 Pere { get { return pere; } }
@@ -33,13 +33,13 @@ namespace Prog_Cursach
             }
         }
 
-        public Nature_Sorting(string name,string nameOut)
+        public Nature_Sorting(string name,string nameOut)//конструктор класу
         {
             nameMain = name;
             this.nameOut = nameOut;
         }
 
-        public void MakeSort()
+        public void MakeSort()//виконання сортування
         {
             int a1 = 0, a2 = 0, mark;
 
@@ -48,7 +48,7 @@ namespace Prog_Cursach
                emp = true,
                emp1 = true;
 
-            while (emp == true && emp1 == true)
+            while (emp == true && emp1 == true)// цикл у якому відбувається сортування
             {
                 mark = 1;
                 fl = true;
@@ -65,8 +65,8 @@ namespace Prog_Cursach
                 {
                     try
                     {
-                        a1 = f.ReadInt32();
-                        f1.Write(a1);
+                        a1 = f.ReadInt32();//зчитування з початкового
+                        f1.Write(a1);//запис у проміжний файл №1
                         emp = true;
                     }
                     catch (EndOfStreamException e)
@@ -83,10 +83,10 @@ namespace Prog_Cursach
                         fl = false;
                     }
 
-                    while (fl == true)
+                    while (fl == true)//цикл, де визначаються серії і розподіляються по файлам
                     {
                         por++;
-                        if (a2 < a1)
+                        if (a2 < a1)//зміна файлу для запису
                         {
                             if (mark == 1)
                             {
@@ -100,6 +100,7 @@ namespace Prog_Cursach
                             }
                         }
 
+                        //запис у поточний файл
                         if (mark == 1)
                         {
                             f1.Write(a2);
@@ -122,6 +123,7 @@ namespace Prog_Cursach
                         }
                     }
 
+                    //додавання до поточного файлу маркеру кінця серії, після закінчення зчитування с вхідного файлу
                     if (emp == true && mark == 1)
                     {
                         f1.Write(marker);
@@ -163,7 +165,7 @@ namespace Prog_Cursach
                         fl1 = false;
                     }
 
-                    while (fl == true && fl1 == true)
+                    while (fl == true && fl1 == true)//упорядкування серій
                     {
 
                         while (a1 != marker && a2 != marker)
@@ -197,7 +199,7 @@ namespace Prog_Cursach
                             }
                         }
 
-                        while (a1 != Int32.MaxValue)
+                        while (a1 != Int32.MaxValue)//дозапис серії з першого файлу
                         {
                             f.Write(a1);
 
@@ -211,7 +213,7 @@ namespace Prog_Cursach
                             }
                         }
 
-                        while (a2 != marker)
+                        while (a2 != marker)//дозапис серії с другого файлу
                         {
                             f.Write(a2);
 
@@ -247,7 +249,7 @@ namespace Prog_Cursach
 
 
 
-                    while (fl == true && a1 != marker)
+                    while (fl == true && a1 != marker)//дозапис з першого файлу
                     {
                         f.Write(a1);
 
@@ -261,7 +263,7 @@ namespace Prog_Cursach
                         }
                     }
 
-                    while (fl1 == true && a2 != marker)
+                    while (fl1 == true && a2 != marker)//дозапис з другого файлу
                     {
                         f.Write(a2);
 
@@ -277,11 +279,12 @@ namespace Prog_Cursach
                 }
             }
 
+            //видалення проміжних файлів
             File.Delete(nameF1);
             File.Delete(nameF2);
 
             DeBinaireFile outFile = new DeBinaireFile(nameMain, nameOut);
-            outFile.CreateTXT(true);
+            outFile.CreateTXT(true);//запис відсортованого файлу з бінарного файла у текстовий 
         }
 
     }

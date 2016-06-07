@@ -8,11 +8,12 @@ namespace Prog_Cursach
 {
     class Generate_files
     {
-        private string nameFront = "",
-            nameNature = "",
-            nameMulti = "";
+        private string nameFront = "",//вхідний файл для прямого злиття
+            nameNature = "",//вхідний файл для природнього злиття
+            nameMulti = "";//вхідний файл для збалансованого багатошляхового злиття
 
-        private int count = 0,
+        private int count = 0,//к-ст елементів
+            //діапазон
             max = 0,
             min = 0;
 
@@ -21,7 +22,7 @@ namespace Prog_Cursach
 
         Random random = new Random();
 
-        public Generate_files(string nameF1, string nameF2, string nameF3,int n,int maxi,int min)
+        public Generate_files(string nameF1, string nameF2, string nameF3,int n,int maxi,int min)//конструктор класу
         {
             nameFront = nameF1;
             nameNature = nameF2;
@@ -45,7 +46,7 @@ namespace Prog_Cursach
                 this.min = min;
         }
 
-        public void Generate()
+        public void Generate()//генерація файлів
         {
 
             using (FileStream writerFront = File.Create(nameFront))
@@ -59,6 +60,7 @@ namespace Prog_Cursach
                 for (int i = 0; i < count; i++)
                 {
 
+                    //генерація залежить від знаків max і min
                     if (fl && !fl1)
                         c = random.Next(max + 1) - random.Next(min + 1);
                     else

@@ -7,18 +7,18 @@ using System.IO;
 
 namespace Prog_Cursach
 {
-    class DeBinaireFile
+    class DeBinaireFile//створення с бінарного файлу текстового
     {
-        private string nameMain="",
-            outName = "";
+        private string nameMain="",//ім'я вхідного файлу
+            outName = "";//ім'я вихідного файлу
 
-        public DeBinaireFile(string inName,string outputName)
+        public DeBinaireFile(string inName,string outputName)//конструктор класу
         {
             nameMain = inName;
             outName = outputName;
         }
 
-        public void CreateTXT(bool top)
+        public void CreateTXT(bool top)//створення .txt , якщо параметр bool
         {
             using (StreamWriter writer = new StreamWriter(outName,false))
             using (FileStream file = File.OpenRead(nameMain))
@@ -46,10 +46,10 @@ namespace Prog_Cursach
             }
 
             if(top)
-            File.Delete(nameMain);
+            File.Delete(nameMain);//видалення бінарного файлу
         }
 
-        public void CreateTXT(int m)
+        public void CreateTXT(int m)//створення .txt , якщо параметр int
         {
             using (StreamWriter writer = new StreamWriter(outName, false))
             using (FileStream file = File.OpenRead(nameMain))
@@ -80,7 +80,8 @@ namespace Prog_Cursach
                     }
                 }
             }
-            File.Delete(nameMain);
+
+            File.Delete(nameMain);//видалення вхідного файлу
         }
         
     }

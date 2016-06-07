@@ -7,9 +7,9 @@ using System.IO;
 
 namespace Prog_Cursach
 {
-    class Multi_Sorting_2
+    class Multi_Sorting_2//сортування збалансованим багатошляховим злиттям
     {
-        const int marker = Int32.MaxValue;
+        const int marker = Int32.MaxValue;//маркер кінця серії
 
         private int por = 0,
                 pere = 0;
@@ -17,22 +17,23 @@ namespace Prog_Cursach
         public Int64 Por { get { return por; } }
         public Int64 Pere { get { return pere; } }
 
-        int n = 0,
-           m = 0;
+        int n = 0,//к-ст елементів
+           m = 0;//к-ст файлів на яку розбивається початковий
 
-        string nameMain = "",
-            nameOut = "";
+        string nameMain = "",//початковий файл
+            nameOut = "";//вихідний файл
 
-        string[] namesA,
+        string[] namesA,//массиви допоміжних файлів
             namesB;
 
 
-        public Multi_Sorting_2(string name, int count,string nameOut)
+        public Multi_Sorting_2(string name, int count,string nameOut)//конструктор класу
         {
             nameMain = name;
             this.nameOut = nameOut;
             n = count;
 
+            //задання кількості допоміжних файлів
             if (n < 50000)
                 m = 2;
             else
@@ -40,7 +41,7 @@ namespace Prog_Cursach
                 if (n < 2500000)
                     m = n / 25000;
                 else
-                    m = 100;
+                    m = 80;
             }
 
             if (m % 2 == 1)
@@ -52,7 +53,7 @@ namespace Prog_Cursach
 
         Random random = new Random();
 
-        private bool AnyTrue(bool[] gap,int c)
+        private bool AnyTrue(bool[] gap,int c)//чи є одне зі значень вхідного масиву істиними
         {
             bool res = false;
 
@@ -69,7 +70,7 @@ namespace Prog_Cursach
             return res;
         }
 
-        private void CreateNames()
+        private void CreateNames()//створює ім'я для допоміжних файлів
         {
             for (int i = 0; i < m; i++)
             {
@@ -78,7 +79,7 @@ namespace Prog_Cursach
             }
         }
 
-        private void DivideFiles()
+        private void DivideFiles()//розбиття вхідного файлу на допоміжні
         {
             FileStream[] files = new FileStream[m];
             BinaryWriter[] writers = new BinaryWriter[m];
@@ -124,20 +125,20 @@ namespace Prog_Cursach
                 }
 
 
-                while (fl == true)
+                while (fl == true)//цикл розбиття вхідного файлу
                 {
                     por++;
 
-                    if (a1 < a2)
+                    if (a1 < a2)//зписується в поточний файл
                     {
                         currentFile.Write(a2);
                     }
                     else
                     {
-                        currentFile.Write(marker);
+                        currentFile.Write(marker);//змінюється файл
 
                             l++;
-                            if (l >= m)
+                            if (l >= m)//то знову записується у 1
                                 l = 0;
 
                                 currentFile = writers[l];
@@ -167,7 +168,7 @@ namespace Prog_Cursach
             File.Delete(nameMain);
         }
 
-        public void SortFiles()
+        public void SortFiles()//виконання сортування
         {
             bool mark = false;
 
@@ -184,7 +185,7 @@ namespace Prog_Cursach
                 opening = new bool[m];
             int[] last = new int[m];
 
-            while(k!=1)
+            while(k!=1)//виконувати доти доки не буде все записано в один файл
             {
                 l = 0;
                 tmp = -1;
@@ -234,7 +235,7 @@ namespace Prog_Cursach
                         flOpen[i] = false;
                 }
 
-                while (AnyTrue(fl,count))
+                while (AnyTrue(fl,count))//поки  хоча б один с проміжних файлів має дані
                 {
                     tmp++;
                     
@@ -251,7 +252,7 @@ namespace Prog_Cursach
                     }
 
 
-                    while (AnyTrue(flOpen,count))
+                    while (AnyTrue(flOpen,count))//злиття серій
                     {
                         for (int i = 0; i < count; i++)
                         {
@@ -340,7 +341,7 @@ namespace Prog_Cursach
             outFile.CreateTXT(n);
         }
 
-        private void DeleteFiles()
+        private void DeleteFiles()//видалення проміжних файлів
         {
             for(int i=0;i< m;i++)
             {
@@ -349,7 +350,7 @@ namespace Prog_Cursach
             }
         }
 
-        public void MakeSort()
+        public void MakeSort()//збір усіх методів
         {
             CreateNames();
             DivideFiles();

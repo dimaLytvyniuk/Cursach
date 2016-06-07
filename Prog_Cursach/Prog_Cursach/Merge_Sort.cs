@@ -7,13 +7,13 @@ using System.IO;
 
 namespace Prog_Cursach
 {
-    class Merge_Sort
+    class Merge_Sort//сортування прямим злиттям
     {
-        string nameMain = "",
-             nameF1 = "f1.txt",
-                nameF2 = "f2.txt",
-            nameOut = "";
-        int count = 0;
+        string nameMain = "",//вхідний файл
+             nameF1 = "f1.txt",//проміжний файл №1
+                nameF2 = "f2.txt",//проміжний файл №2
+            nameOut = "";//вихідний файл
+        int count = 0;//к-сть елементів
 
         private int por = 0,
           pere = 0;
@@ -33,21 +33,21 @@ namespace Prog_Cursach
             }
         }
 
-        public Merge_Sort(string name,int n,string nameOut)
+        public Merge_Sort(string name,int n,string nameOut)//конструктор класу
         {
             nameMain = name;
             count = n;
             this.nameOut = nameOut;
         }
 
-        public void MakeSort()
+        public void MakeSort()//виконання сортування
         {
             int a1 = 0, a2 = 0, k = 1;
             bool fl = true,
                 fl1 = true;
 
 
-            while (k < count)
+            while (k < count)//виконання сортування
             {
                 using (FileStream file = File.OpenRead(nameMain))
                 using (BinaryReader f = new BinaryReader(file))
@@ -61,10 +61,10 @@ namespace Prog_Cursach
                     fl = true;
                     fl = true;
 
-                    while (fl == true)
+                    while (fl == true)//розбиття вхідного файлу на проміжні
                     {
 
-                        for (int i = 0; i < k && fl == true; i++)
+                        for (int i = 0; i < k && fl == true; i++)//запис у №1
                         {
                             try
                             {
@@ -77,7 +77,7 @@ namespace Prog_Cursach
                             }
                         }
 
-                        for (int j = 0; j < k && (fl == true); j++)
+                        for (int j = 0; j < k && (fl == true); j++)//запис у №2
                         {
                             try
                             {
@@ -121,12 +121,12 @@ namespace Prog_Cursach
                         fl1 = false;
                     }
 
-                    while (fl == true && fl1 == true)
+                    while (fl == true && fl1 == true)//виконання злиття поки один с файлів не закінчиться
                     {
                         int i = 0;
                         int j = 0;
 
-                        while (i < k && j < k && (fl == true) && (fl1 == true))
+                        while (i < k && j < k && (fl == true) && (fl1 == true))//упорядкування серій
                         {
                             por++;
 
@@ -160,7 +160,7 @@ namespace Prog_Cursach
                             }
                         }
 
-                        while (i < k && (fl))
+                        while (i < k && (fl))//дозапис серій с допоміжного файлу №1
                         {
                             f.Write(a1);
 
@@ -175,7 +175,7 @@ namespace Prog_Cursach
                             }
                         }
 
-                        while (j < k && (fl1))
+                        while (j < k && (fl1))//дозапис серій с допоміжного файлу №2
                         {
                             f.Write(a2);
 
@@ -191,7 +191,7 @@ namespace Prog_Cursach
                         }
                     }
 
-                    while (fl)
+                    while (fl)//дозапис с допоміжного файлу №1
                     {
                         f.Write(a1);
                         try
@@ -204,7 +204,7 @@ namespace Prog_Cursach
                         }
                     }
 
-                    while (fl1)
+                    while (fl1)//дозапис с допоміжного файлу №2
                     {
                         f.Write(a2);
 
